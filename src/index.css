@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   COMPONENTES PERSONALIZADOS
+   =============================== */
+
+@layer components {
+  /* ===== HERO CTA BUTTONS ===== */
+  .btn-cta-primary {
+    @apply inline-flex items-center gap-2
+           px-2.5 py-2 text-sm   /* 👈 MÁS CORTO EN MOBILE */
+           md:px-6 md:py-3 md:text-base
+           rounded-full
+           font-medium text-dark
+           transition-all duration-300 ease-out
+           bg-gradient-to-r from-[#D4AF37] via-[#F5D76E] to-[#D4AF37]
+           shadow-[0_8px_30px_rgba(212,175,55,0.35)];
+    width: fit-content; /* 👈 CLAVE: NO SE ESTIRA */
+  }
+
+  .btn-cta-primary:hover {
+    @apply scale-[1.04];
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.55);
+  }
+
+  .btn-cta-secondary {
+    @apply inline-flex items-center gap-2
+           px-2.5 py-2 text-sm   /* 👈 MÁS CORTO EN MOBILE */
+           md:px-6 md:py-3 md:text-base
+           rounded-full
+           border border-white/40
+           text-white
+           backdrop-blur-sm
+           transition-all duration-300 ease-out;
+    background-color: rgba(255, 255, 255, 0.04);
+    width: fit-content; /* 👈 CLAVE */
+  }
+
+  .btn-cta-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* ===== HERO VERTICAL LABEL ===== */
+  .vertical-label {
+    @apply flex items-center gap-6 text-white/70;
+  }
+
+  .vertical-line {
+    @apply w-px h-32 bg-white/40;
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.35em;
+    font-size: 0.75rem;
+  }
+
+  /* ===== NAV LINKS ===== */
+  .nav-link {
+    @apply px-4 py-2 rounded-full text-sm text-white/80
+           transition-all duration-300 ease-out;
+  }
+
+  .nav-link:hover {
+    @apply text-white bg-white/10;
+  }
+
+  .nav-link-active {
+    @apply bg-white/15 text-white;
+  }
+
+  /* ===== HEADER BUTTONS ===== */
+  .btn-header-whatsapp {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full
+           text-sm font-medium text-white
+           bg-emerald-500/90
+           transition-all duration-300 ease-out;
+  }
+
+  .btn-header-whatsapp:hover {
+    @apply bg-emerald-500 scale-[1.03];
+  }
+
+  .btn-header-call {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full
+           text-sm font-medium text-dark
+           bg-gold
+           transition-all duration-300 ease-out;
+  }
+
+  .btn-header-call:hover {
+    @apply scale-[1.03];
+  }
+
+  /* ===== CTA LINK (Servicios) ===== */
+  .cta-link {
+    @apply relative inline-flex items-center gap-2
+           font-medium cursor-pointer
+           text-gold
+           transition-colors duration-300;
+  }
+.cta-link:hover {
+  color: #000000;
+}
+
+  .cta-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 1px;
+    background-color: #D4AF37;
+    transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    pointer-events: none;
+  }
+
+  .cta-link:hover::after {
+    width: 100%;
+  }
+
+  .cta-icon {
+    width: 0.9em;
+    height: 0.8em;
+    fill: currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.5s ease-out;
+  }
+
+  .cta-link:hover .cta-icon {
+    transform: rotate(0deg);
+  }
+}
+
+/* ===== SLIDER DOTS ===== */
+.slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: all 0.4s ease;
+}
+
+.slider-dot.active {
+  width: 22px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-mouse {
+  width: 26px;
+  height: 42px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-wheel {
+  width: 4px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  animation: scroll-wheel 1.6s infinite ease-in-out;
+}
+
+@keyframes scroll-wheel {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(10px); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ===== GLOBAL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+  height: 50px;
+  width: 50px;
+  position: relative;
+}
+
+.hamburger .checkbox {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.line {
+  transition: 0.5s;
+  stroke-width: 6px;
+  stroke: white; /* hamburguesa cerrada */
+}
+
+.lineTop {
+  stroke-dasharray: 40 40;
+  stroke-dashoffset: 25;
+}
+
+.lineBottom {
+  stroke-dasharray: 40 40;
+  stroke-dashoffset: 60;
+}
+
+.lineMid {
+  stroke-dasharray: 40 40;
+}
+
+.hamburger .checkbox:checked + svg .line {
+  stroke: #d4af37; /* X dorada */
+}
+
+.hamburger .checkbox:checked + svg .lineTop {
+  stroke-dashoffset: 0;
+  transform-origin: left;
+  transform: rotate(45deg) translate(-7px, -5px);
+}
+
+.hamburger .checkbox:checked + svg .lineMid {
+  stroke-dashoffset: 40;
+}
+
+.hamburger .checkbox:checked + svg .lineBottom {
+  stroke-dashoffset: 0;
+  transform-origin: left;
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
