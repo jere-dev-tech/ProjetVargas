@@ -126,32 +126,59 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* ===== DOTS ===== */}
-<div className="absolute bottom-40 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex gap-6">
+{/* ===== DOTS ===== */}
+<div
+  className="
+    absolute
+    bottom-44        /* 📱 mobile: más arriba */
+    md:bottom-40     /* 🖥️ desktop */
+    left-1/2
+    -translate-x-1/2
+    z-20
+    flex gap-6
+  "
+>
+  {slides.map((_, i) => (
+    <button
+      key={i}
+      onClick={() => setActiveSlide(i)}
+      className={`slider-dot ${activeSlide === i ? "active" : ""}`}
+    />
+  ))}
+</div>
 
 
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveSlide(i)}
-            className={`slider-dot ${activeSlide === i ? "active" : ""}`}
-          />
-        ))}
-      </div>
 
-      {/* ===== SCROLL ===== */}
-<div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4 text-white/80">
+{/* ===== SCROLL ===== */}
+<div
+  className="
+    absolute
+    bottom-20
+    md:bottom-16
+    left-1/2
+    -translate-x-1/2
+    z-[60]
+    flex flex-col
+    items-center
+    gap-4
+    text-white/80
+    pointer-events-auto
+  "
+>
+<a
+  href="#servicios"
+  className="text-xs tracking-widest uppercase"
+>
+  DESCUBRIR
+</a>
+
+<a href="#servicios" className="scroll-mouse">
+  <span className="scroll-wheel"></span>
+</a>
+
+</div>
 
 
-
-
-        <a href="#servicios" className="text-xs tracking-widest uppercase">
-          DESCUBRIR
-        </a>
-        <a href="#servicios" className="scroll-mouse">
-          <span className="scroll-wheel" />
-        </a>
-      </div>
     </section>
   );
 };
