@@ -4,18 +4,75 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/ProjetVargas/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
-  rel="stylesheet"
-/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Carpinteria-Vargas</title>
-    <script type="module" crossorigin src="/ProjetVargas/assets/index-BlggpTm7.js"></script>
-    <link rel="stylesheet" crossorigin href="/ProjetVargas/assets/index-fH20OnqY.css">
+    <script type="module" crossorigin src="/ProjetVargas/assets/index-BBIJgN_E.js"></script>
+    <link rel="stylesheet" crossorigin href="/ProjetVargas/assets/index-OQKLnP2M.css">
   </head>
+
   <body>
+    <!-- BOTÓN WHATSAPP -->
+    <a
+      href="https://wa.me/549XXXXXXXXXX"
+      target="_blank"
+      class="whatsapp-float group"
+      aria-label="WhatsApp"
+    >
+      <span class="pulse"></span>
+
+      <span class="whatsapp-tooltip">
+        ¿Tenés un proyecto?
+      </span>
+
+      <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='%23000000'%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.42%209.49c-.19-.09-1.1-.54-1.27-.61s-.29-.09-.42.1-.48.6-.59.73-.21.14-.4%200a5.13%205.13%200%200%201-1.49-.92%205.25%205.25%200%200%201-1-1.29c-.11-.18%200-.28.08-.38s.18-.21.28-.32a1.39%201.39%200%200%200%20.18-.31.38.38%200%200%200%200-.33c0-.09-.42-1-.58-1.37s-.3-.32-.41-.32h-.4a.72.72%200%200%200-.5.23%202.1%202.1%200%200%200-.65%201.55A3.59%203.59%200%200%200%205%208.2%208.32%208.32%200%200%200%208.19%2011c.44.19.78.3%201.05.39a2.53%202.53%200%200%200%201.17.07%201.93%201.93%200%200%200%201.26-.88%201.67%201.67%200%200%200%20.11-.88c-.05-.07-.17-.12-.36-.21z'/%3e%3cpath%20d='M13.29%202.68A7.36%207.36%200%200%200%208%20.5a7.44%207.44%200%200%200-6.41%2011.15l-1%203.85%203.94-1a7.4%207.4%200%200%200%203.55.9H8a7.44%207.44%200%200%200%205.29-12.72zM8%2014.12a6.12%206.12%200%200%201-3.15-.87l-.22-.13-2.34.61.62-2.28-.14-.23a6.18%206.18%200%200%201%209.6-7.65%206.12%206.12%200%200%201%201.81%204.37A6.19%206.19%200%200%201%208%2014.12z'/%3e%3c/svg%3e" alt="WhatsApp" />
+    </a>
+
+    <!-- APP REACT -->
     <div id="root"></div>
+
+    <!-- MAIN (SOLO UNA VEZ) -->
+
+    <!-- LÓGICA WHATSAPP SCROLL -->
+    <script>
+      // esperamos a que React pinte la sección #servicios
+      function waitForServicios() {
+        const servicios = document.getElementById("servicios");
+        const whatsappBtn = document.querySelector(".whatsapp-float");
+
+        if (!servicios || !whatsappBtn) {
+          requestAnimationFrame(waitForServicios);
+          return;
+        }
+
+        // SOLO DESKTOP
+        if (window.innerWidth < 768) return;
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              // cruzás "Nuestros Servicios"
+              whatsappBtn.classList.add("is-visible");
+            } else {
+              // volvés arriba (hero)
+              if (window.scrollY < servicios.offsetTop) {
+                whatsappBtn.classList.remove("is-visible");
+              }
+            }
+          },
+          { threshold: 0.25 }
+        );
+
+        observer.observe(servicios);
+      }
+
+      waitForServicios();
+    </script>
   </body>
 </html>
